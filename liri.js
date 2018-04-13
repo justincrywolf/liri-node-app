@@ -50,7 +50,9 @@ var getMeMovie = function( movieName ){
     if( !error && response.statusCode === 200 ){
      
       var jsonData = JSON.parse(body);
-      console.log( "Title: " + jsonData.Title + "\nYear: " + jsonData.Year + "\nIMDB Rating: " + jsonData.Ratings[0].Value + "\nRotten Tomatoes Rating: " + jsonData.Ratings[1].Value + "\nCountry: " + jsonData.Country + "\nLanguage: " + jsonData.Language + "\nPlot: " + jsonData.Plot + "\nActors: " + jsonData.Actors);
+      var movieReturn = "Title: " + jsonData.Title + "\nYear: " + jsonData.Year + "\nIMDB Rating: " + jsonData.Ratings[0].Value + "\nRotten Tomatoes Rating: " + jsonData.Ratings[1].Value + "\nCountry: " + jsonData.Country + "\nLanguage: " + jsonData.Language + "\nPlot: " + jsonData.Plot + "\nActors: " + jsonData.Actors;
+      console.log( movieReturn );
+      fs.appendFile( "log.txt", "\n"+jsonData.Title );
     }
   });
 }
